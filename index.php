@@ -19,7 +19,7 @@
         <input type="submit" />
     </form>
 </div>
- <?php echo '<p>Hola Mundo</p>'; ?>
+ <?php echo '<p>Hola Mundo</p>'; echo '<p>Hola GonFikar/p>'; ?>
 
 <?php
 $username = "root";
