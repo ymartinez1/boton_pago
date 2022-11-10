@@ -8,7 +8,7 @@
  </head>
  <body>
 <div class="container">
-    <form action="index.php" method="post">
+    <form action="insert.php" method="post">
         idApoderado: <input type="text" name = "field1" /><br/>
         Rut: <input type="text" name = "field2" /><br/>
         Nombre: <input type="text" name = "field3" /><br/>
@@ -19,26 +19,13 @@
         <input type="submit" />
     </form>
 </div>
- <?php echo '<p>Hola Mundo</p>'; echo '<p>Hola GonFikar/p>'; ?>
+ <?php echo '<p>Hola Mundo</p>'; echo '<p>Hola GonFikar </p>'; ?>
 
 <?php
 $username = "root";
 $password = "desarrollador";
 $database = "boton_pago";
 $mysqli = new mysqli("localhost", $username, $password, $database);
-
-$field1 = $mysqli->real_escape_string($_POST['field1']);
-$field2 = $mysqli->real_escape_string($_POST['field2']);
-$field3 = $mysqli->real_escape_string($_POST['field3']);
-$field4 = $mysqli->real_escape_string($_POST['field4']);
-$field5 = $mysqli->real_escape_string($_POST['field5']);
-$field6 = $mysqli->real_escape_string($_POST['field6']);
-
-$query = "INSERT INTO apoderado (idApoderado, Rut, Nombre, Apellido, Email, Direccion)
-            VALUES ('{$field1}','{$field2}','{$field3}','{$field4}','{$field5}','{$field6}')";
-
-
-$mysqli->query($query);
 
 $query = "SELECT * FROM apoderado";
 
