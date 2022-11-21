@@ -17,8 +17,8 @@
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center mb-2">
-					<img style="max-height: 70px;" src="images/cicv-logo.png">
-					<h2 class="heading-section">Hola! Tu RUT es el <b></b></h2>
+					<img class="logo-5" src="images/cicv-logo.png">
+					<h2 class="heading-section">Hola! Tu RUT es el <b>18.864.313-2</b></h2>
 					<p>Seleccione la(s) cuotas que quiere pagar:</p>
 				</div>
 			</div>
@@ -34,7 +34,7 @@
 									<th>Estado</th>
 									<th>
 										<label class="checkbox-wrap checkbox-primary">
-											<input type="checkbox" checked>
+											<input type="checkbox" onClick="selectAll(this)">
 											<span class="checkmark"></span>
 										</label>
 									</th>
@@ -42,7 +42,7 @@
 							</thead>
 							<tbody>
 								<tr class="alert" role="alert">
-									<td>97531</td>
+									<td>00097531</td>
 									<td class="d-flex align-items-center">
 										<div class="cuota">
 											<span>Cuota Octubre</span>
@@ -53,30 +53,30 @@
 									<td class="status"><span class="vencida">Vencida</span></td>
 									<td>
 										<label class="checkbox-wrap checkbox-primary">
-											<input type="checkbox" checked>
+											<input class="cuotas-check" type="checkbox" name="foo" attr-price="80000">
 											<span class="checkmark"></span>
 										</label>
 									</td>
 								</tr>
 								<tr class="alert" role="alert">
-									<td>86420</td>
+									<td>00086420</td>
 									<td class="d-flex align-items-center">
 										<div class="cuota">
 											<span>Cuota Octubre</span>
 											<span>Alumno 02</span>
 										</div>
 									</td>
-									<td>$80.000-</td>
+									<td>$70.000-</td>
 									<td class="status"><span class="vencida">Vencida</span></td>
 									<td>
 										<label class="checkbox-wrap checkbox-primary">
-											<input type="checkbox" checked>
+											<input class="cuotas-check" type="checkbox" name="foo" attr-price="70000">
 											<span class="checkmark"></span>
 										</label>
 									</td>
 								</tr>
 								<tr class="alert" role="alert">
-									<td>97531</td>
+									<td>00097531</td>
 									<td class="d-flex align-items-center">
 										<div class="cuota">
 											<span>Cuota Noviembre</span>
@@ -87,28 +87,27 @@
 									<td class="status"><span class="active">Próxima a vencer</span></td>
 									<td>
 										<label class="checkbox-wrap checkbox-primary">
-											<input type="checkbox">
+											<input class="cuotas-check" type="checkbox" name="foo" attr-price="80000">
 											<span class="checkmark"></span>
 										</label>
 									</td>
 								</tr>
 								<tr class="alert" role="alert">
-									<td>86420</td>
+									<td>00086420</td>
 									<td class="d-flex align-items-center">
 										<div class="cuota">
 											<span>Cuota Noviembre</span>
 											<span>Alumno 02</span>
 										</div>
 									</td>
-									<td>$80.000-</td>
+									<td>$70.000-</td>
 									<td class="status"><span class="active">Próxima a vencer</span></td>
 									<td>
 										<label class="checkbox-wrap checkbox-primary">
-											<input type="checkbox">
+											<input class="cuotas-check" type="checkbox" name="foo" attr-price="70000">
 											<span class="checkmark"></span>
 										</label>
 									</td>
-								</tr>
 								</tr>
 							</tbody>
 						</table>
@@ -117,15 +116,17 @@
 			</div>
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center mb-2">
-					<h2 class="heading-section">Total a pagar: $320.000-</h2>
+					<h2 class="heading-section">
+						Total a pagar: <b><input id="total" class="input-total" type="text" placeholder="$0-" disabled></b>
+					</h2>
 				</div>
 			</div>
 			<div class="row text-center">
 				<div class="col-md-3">
-					<button type="submit" class="btn btn-secondary mb-3">SALIR</button>
+					<button type="submit" class="btn btn-secondary mb-2">SALIR</button>
 				</div>
 				<div class="col-md-3 ms-auto">
-					<button type="submit" class="btn btn-primary mb-3">CONTINUAR</button>
+					<button type="submit" class="btn btn-primary mb-2">CONTINUAR</button>
 				</div>
 			</div>
 		</div>
@@ -154,8 +155,11 @@
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
 	<script src="js/jquery.min.js"></script>
 	<script src="js/popper.js"></script>
 	<script src="js/main.js"></script>
+	<script src="js/add.js"></script>
 </body>
 </html>

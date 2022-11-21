@@ -74,7 +74,7 @@ h1, h2, h3, h4, h5, h6 {
 
 p {
   margin-top: 0;
-  margin-bottom: 1rem; }
+  margin-bottom: .5rem; }
 
 abbr[title],
 abbr[data-original-title] {
@@ -188,7 +188,7 @@ th {
 
 label {
   display: inline-block;
-  margin-bottom: 0.5rem; }
+  margin-bottom: 0.0rem; }
 
 button {
   border-radius: 0;
@@ -1343,7 +1343,7 @@ pre {
     vertical-align: top;
     border-top: 1px solid #dee2e6; }
   .table thead th {
-    vertical-align: bottom;
+    vertical-align: middle;
     border-bottom: 2px solid #dee2e6; }
   .table tbody + tbody {
     border-top: 2px solid #dee2e6; }
@@ -8173,8 +8173,9 @@ h1, h2, h3, h4, h5,
   padding-bottom: 0; }
 
 .heading-section {
-  font-size: 24px;
-  color: #000; }
+  font-size: 22px;
+  color: #00b1e9;
+  font-weight: bold; }
 
 .img {
   background-size: cover;
@@ -8182,7 +8183,10 @@ h1, h2, h3, h4, h5,
   background-position: center center; }
 
 .table-wrap {
-  overflow-x: auto; }
+  overflow-x: auto;
+  min-height: 24em;
+  display: flex;
+  align-items: center; }
 
 .table {
   min-width: 1000px !important;
@@ -8192,17 +8196,18 @@ h1, h2, h3, h4, h5,
   box-shadow: 0px 5px 12px -12px rgba(0, 0, 0, 0.29); }
   .table thead th {
     border: none;
-    padding: 20px;
-    font-size: 13px;
+    padding: 28px 20px;
+    font-size: 14px;
     font-weight: bold;
     text-transform: uppercase;
     color: #fff; }
   .table thead tr {
     background: #00b1e9;
-    border-bottom: 4px solid #eceffa; }
+    margin-bottom: 14px;
+    border-bottom: 5px solid #eceffa; }
   .table tbody tr {
     margin-bottom: 10px;
-    border-bottom: 4px solid #f8f9fd; }
+    border-bottom: 5px solid #f8f9fd; }
     .table tbody tr:last-child {
       border-bottom: 0; }
   .table tbody th, .table tbody td {
@@ -8251,6 +8256,10 @@ h1, h2, h3, h4, h5,
   }
   .icon-rrss {
     font-size: 2em;
+  }
+  .white-text p {
+    margin-top: 0;
+    margin-bottom: 0rem;
   }
 
 .checkbox-wrap {
@@ -8308,6 +8317,27 @@ h1, h2, h3, h4, h5,
   .checkbox-primary input:checked ~ .checkmark:after {
     color: #1f3459; }
 .footer-section {
-  padding: 2em 0;
+  padding: 1em 0;
   background-color: #1f3459;
+}
+
+.input-total {
+  background-color: transparent;
+  border: 0px transparent solid;
+  width: 150px;
+}
+#msgerror {
+  color: #f00;
+}
+.tiny-text {
+  font-size: 14px;
+}
+
+.logo-5 {
+  height: 5em;
+  max-width: 100%;
+}
+.logo-6 {
+  height: 6em;
+  max-width: 100%;
 }
