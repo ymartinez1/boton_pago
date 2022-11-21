@@ -11,44 +11,48 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 
 	<link rel="stylesheet" href="css/style.css">
-
-	<script src="https://www.google.com/recaptcha/api.js?hl=es" async defer></script>
-
-				<?php require_once "php/php-catcha.php"; ?>
 </head>
 <body>
 	<section class="ftco-section">
 		<div class="container">
-			<div class="row justify-content-center">
+			<div class="row justify-content-center mb-2">
 				<div class="col-md-6 text-center">
-					<img class="logo-6" src="images/febe-sello-logo.png">
+					<img class="logo-5" src="images/cicv-logo.png">
+					<h2 class="heading-section">Total a pagar: <b>$80.000-</b></h2>
 				</div>
 			</div>
-			<div class="row justify-content-center mt-3 mb-3">
-				<div class="col-md-4 text-center shadow-lg p-5 bg-white rounded">
-					<div class="mb-3">
-						<h2 class="heading-section">Iniciar sesión</h2>
-					</div>
-					<div class="mb-3">
-						<input type="text" class="form-control" placeholder="Usuario">
-					</div>
-					<div class="mb-3">
-						<input type="password" class="form-control" placeholder="Contraseña">
-					</div>
-					<div class="mb-3">
-						<div class="g-recaptcha" data-sitekey="6Ld9NiAjAAAAALPthhVN7bfp73ffdt1LEptYyZ6I"></div>
-					</div>
-					<button id="entrar" class="btn btn-primary w-100">ENTRAR</button>
-					<div class="mb-3">
-						<hr class="hr-login">
-					</div>
-					<div class="mb-3">
-						<a class="link" href="#">¿Has olvidado tu contraseña?</a>
-					</div>
+			<div class="row text-center mt-3">
+				<p>Seleccione la forma de pago:</p>
+			</div>
+			<div class="row justify-content-center mb-1">
+				<button class="col-md-3 metodo-box rounded m-2">
+					<img class="logo-5" src="images/metodos/webpay.png">
+				</button>
+				<button class="col-md-3 metodo-box rounded m-2">
+					<img class="logo-5" src="images/metodos/servipag.png">
+				</button>
+			</div>
+			<div class="row justify-content-center mt-1 mb-1">
+				<button class="col-md-3 metodo-box rounded m-2">
+					<img class="logo-5" src="images/metodos/khipu.png">
+				</button>
+				<button class="col-md-3 metodo-box rounded m-2">
+					<img class="logo-5" src="images/metodos/getnet.png">
+				</button>
+			</div>
+			<div class="row justify-content-center mt-1 mb-1">
+				<button class="col-md-3 metodo-box rounded m-2">
+					<img class="logo-5" src="images/metodos/fintoc.png">
+				</button>
+			</div>
+			<div class="row justify-content-center mt-4">
+				<div class="col-md-3">
+					<button type="submit" class="btn btn-secondary mb-2">VOLVER</button>
 				</div>
 			</div>
 		</div>
 	</section>
+
 	<section class="footer-section">
 		<div class="container">
 			<div class="row white-text">
