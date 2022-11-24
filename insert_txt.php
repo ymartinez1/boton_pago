@@ -4,12 +4,16 @@ $file = fopen("texto.txt","r");
 $count = 0;
 $array = [];
 $matriz = [];
+$header = 0;
+$footer = 0;
 
 while(!feof($file)) {
   $row = fgets($file);
   if($row != "") {
-    $two = substr($row, 0, 1);
-    if ($two == 2) {
+    $num = substr($row, 0, 1);
+    if($num == 1){
+      $header = $row;
+    }else if ($num == 2) {
       $array[$count] = $row;
       $count++;
     }
@@ -18,20 +22,22 @@ while(!feof($file)) {
 
 fclose($file);
 
+$header_num_colegio = substr($header, 1, 4);
+
 for ($a=0; $a < $count; $a++) {
   $cadena = $array[$a];
 
-  $n_contrato = substr($cadena, 1, 9);
-  $n_cuota = substr($cadena, 19, 9);
-  $rut_in = substr($cadena, 28, 9);
-  $dig_verif = substr($cadena, 37, 1);
+  $n_contrato = mb_substr($cadena, 1, 9);
+  $n_cuota = mb_substr($cadena, 19, 9);
+  $rut_in = mb_substr($cadena, 28, 9);
+  $dig_verif = mb_substr($cadena, 37, 1);
   $rut = $rut_in . $dig_verif;
-  $nombre_deudor = substr($cadena, 38, 40);
-  $direccion = substr($cadena, 78, 40);
-  $comuna = substr($cadena, 118, 20);
-  $ciudad = substr($cadena, 138, 20);
-  $monto_cuota = substr($cadena, 159, 15);
-  $fecha_vencim = substr($cadena, 174, 8);
+  $nombre_deudor = mb_substr($cadena, 38, 40);
+  $direccion = mb_substr($cadena, 78, 40);
+  $comuna = mb_substr($cadena, 118, 20);
+  $ciudad = mb_substr($cadena, 138, 20);
+  $monto_cuota = mb_substr($cadena, 159, 15);
+  $fecha_vencim = mb_substr($cadena, 174, 8);
 
   $matriz[$a][0] = $n_contrato;
   $matriz[$a][1] = $n_cuota;
@@ -44,40 +50,37 @@ for ($a=0; $a < $count; $a++) {
   $matriz[$a][8] = $fecha_vencim;
 }
 
-/*
-$u = 0;
-while($u <= $count) {
-  echo $array[$u] . '<br>' . '';
-  $u++;
-}
-*/
-
+// SOLO PARA REVISAR EL PRIMER REGISTRO
 $cadena = $array[0];
-
-$n_contrato = substr($cadena, 1, 9);
-$n_cuota = substr($cadena, 19, 9);
-$rut_in = substr($cadena, 28, 9);
-$dig_verif = substr($cadena, 37, 1);
+$n_contrato = mb_substr($cadena, 1, 9);
+$n_cuota = mb_substr($cadena, 19, 9);
+$rut_in = mb_substr($cadena, 28, 9);
+$dig_verif = mb_substr($cadena, 37, 1);
 $rut = $rut_in . $dig_verif;
-$nombre_deudor = substr($cadena, 38, 40);
-$direccion = substr($cadena, 78, 40);
-$comuna = substr($cadena, 118, 20);
-$ciudad = substr($cadena, 138, 20);
-$monto_cuota = substr($cadena, 159, 15);
-$fecha_vencim = substr($cadena, 174, 8);
-
-echo "Cantidad registros: " . $count . "<br>";
-echo "Cadena original: " . $cadena . "<br>";
-echo "---------------<br>";
-echo "N° de contrato: " . $n_contrato . "<br>";
-echo "N° de couta: " . $n_cuota . "<br>";
+$nombre_deudor = mb_substr($cadena, 38, 40);
+$direccion = mb_substr($cadena, 78, 40);
+$comuna = mb_substr($cadena, 118, 20);
+$ciudad = mb_substr($cadena, 138, 20);
+$monto_cuota = mb_substr($cadena, 159, 15);
+$fecha_vencim = mb_substr($cadena, 174, 8);
+echo "Cantidad Registros: " . $count . "<br>";
+echo "---------------<br><br>";
+echo "Código Colegio (Header): " . $header . "<br>";
+echo "Registro Original: " . $cadena . "<br>";
+echo "---------------<br><br>";
+echo "N° de Contrato: " . $n_contrato . "<br>";
+echo "N° de Couta: " . $n_cuota . "<br>";
 echo "Rut: " . $rut . "<br>";
-echo "Nombre deudor: " . $nombre_deudor . "<br>";
+echo "Nombre Deudor: " . $nombre_deudor . "<br>";
 echo "Dirección: " . $direccion . "<br>";
 echo "Comuna: " . $comuna . "<br>";
 echo "Ciudad: " . $ciudad . "<br>";
-echo "Monto cuota: " . $monto_cuota . "<br>";
-echo "Fecha vencimiento: " . $fecha_vencim . "<br>";
+echo "Monto Cuota: " . $monto_cuota . "<br>";
+echo "Fecha Vencimiento: " . $fecha_vencim . "<br>";
+echo "---------------<br><br>";
+//-------------------------------------
+
+echo "num_colegio: " . $header_num_colegio . "<br>";
 
 echo "<pre>";
 print_r($matriz);
