@@ -1,63 +1,89 @@
-
 <?php
 
-$file = fopen("letra.txt","r");
+$file = fopen("texto.txt","r");
+$count = 0;
+$array = [];
+$matriz = [];
 
-$i = 0;
-$var = [];
-
-while(! feof($file))
-{
-  $var[$i] = fgets($file);
-  $i++;
-}
-
-$e = 0;
-
-while($e <= $i) {
-  echo $var[$e] . '<br><br>' .'';
-  $e++;
+while(!feof($file)) {
+  $row = fgets($file);
+  if($row != "") {
+    $two = substr($row, 0, 1);
+    if ($two == 2) {
+      $array[$count] = $row;
+      $count++;
+    }
+  }
 }
 
 fclose($file);
 
-$cadena = $var[1];
+for ($a=0; $a < $count; $a++) {
+  $cadena = $array[$a];
 
-$a = substr($cadena, 0, 1);
-$b = substr($cadena, 1, 9);
-$c = substr($cadena, 10, 9);
-$d = substr($cadena, 19, 9);
-$e = substr($cadena, 29, 9);
-$f = substr($cadena, 37, 1);
-$g = substr($cadena, 38, 40);
-$h = substr($cadena, 78, 40);
-$i = substr($cadena, 118, 20);
-$j = substr($cadena, 138, 20);
-$k = substr($cadena, 158, 1);
-$l = substr($cadena, 159, 15);
-$m = substr($cadena, 174, 8);
-$n = substr($cadena, 182, 1);
-$o = substr($cadena, 183, 1);
-$p = substr($cadena, 184, 6);
+  $n_contrato = substr($cadena, 1, 9);
+  $n_cuota = substr($cadena, 19, 9);
+  $rut_in = substr($cadena, 28, 9);
+  $dig_verif = substr($cadena, 37, 1);
+  $rut = $rut_in . $dig_verif;
+  $nombre_deudor = substr($cadena, 38, 40);
+  $direccion = substr($cadena, 78, 40);
+  $comuna = substr($cadena, 118, 20);
+  $ciudad = substr($cadena, 138, 20);
+  $monto_cuota = substr($cadena, 159, 15);
+  $fecha_vencim = substr($cadena, 174, 8);
 
-echo "Cadena Original: " . $cadena . "<br><br>";
-echo "Tipo de Registro: " . $a . "<br><br>";
-echo "Numero de ODV: " . $b . "<br><br>";
-echo "Filler: " . $c . "<br><br>";
-echo "Segundo Identificador: " . $d . "<br><br>";
-echo "Rut Aceptante: " . formateo_rut($e) . "<br><br>";
-echo "Dígito Verificador: " . $f . "<br><br>";
-echo "Nombre Deudor: " . $g . "<br><br>";
-echo "Dirección: " . $h . "<br><br>";
-echo "Comuna: " . $i . "<br><br>";
-echo "Ciudad: " . $j . "<br><br>";
-echo "Código Moneda: " . $k . "<br><br>";
-echo "Monto Cuota: " . $l . "<br><br>";
-echo "Fecha Vencimiento: " . $m . "<br><br>";
-echo "Recargo: " . $n . "<br><br>";
-echo "Descuento Pronto Pago: " . $o . "<br><br>";
-echo "Filler: " . $p . "<br><br>";
+  $matriz[$a][0] = $n_contrato;
+  $matriz[$a][1] = $n_cuota;
+  $matriz[$a][2] = $rut;
+  $matriz[$a][3] = $nombre_deudor;
+  $matriz[$a][4] = $direccion;
+  $matriz[$a][5] = $comuna;
+  $matriz[$a][6] = $ciudad;
+  $matriz[$a][7] = $monto_cuota;
+  $matriz[$a][8] = $fecha_vencim;
+}
 
+/*
+$u = 0;
+while($u <= $count) {
+  echo $array[$u] . '<br>' . '';
+  $u++;
+}
+*/
+
+$cadena = $array[0];
+
+$n_contrato = substr($cadena, 1, 9);
+$n_cuota = substr($cadena, 19, 9);
+$rut_in = substr($cadena, 28, 9);
+$dig_verif = substr($cadena, 37, 1);
+$rut = $rut_in . $dig_verif;
+$nombre_deudor = substr($cadena, 38, 40);
+$direccion = substr($cadena, 78, 40);
+$comuna = substr($cadena, 118, 20);
+$ciudad = substr($cadena, 138, 20);
+$monto_cuota = substr($cadena, 159, 15);
+$fecha_vencim = substr($cadena, 174, 8);
+
+echo "Cantidad registros: " . $count . "<br>";
+echo "Cadena original: " . $cadena . "<br>";
+echo "---------------<br>";
+echo "N° de contrato: " . $n_contrato . "<br>";
+echo "N° de couta: " . $n_cuota . "<br>";
+echo "Rut: " . $rut . "<br>";
+echo "Nombre deudor: " . $nombre_deudor . "<br>";
+echo "Dirección: " . $direccion . "<br>";
+echo "Comuna: " . $comuna . "<br>";
+echo "Ciudad: " . $ciudad . "<br>";
+echo "Monto cuota: " . $monto_cuota . "<br>";
+echo "Fecha vencimiento: " . $fecha_vencim . "<br>";
+
+echo "<pre>";
+print_r($matriz);
+echo "</pre>";
+
+/*
 function formateo_rut($e){
   $p1 = substr($e, 0,2);
   $p2 = substr($e, 2,3);
@@ -65,4 +91,6 @@ function formateo_rut($e){
   $p4 = substr($e, 8);
   return $p1.".".$p2.".".$p3."-".$p4;
 }
+*/
+
 ?> 
