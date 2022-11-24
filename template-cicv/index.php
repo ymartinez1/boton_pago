@@ -1,8 +1,3 @@
-<?php 
-session_start();
-$usuario = $_SESSION['username'];
-echo "<h1>BIENVENIDO	$username </H1> ";
-?>
 <html lang="es">
 <head>
 	<title>CICV - Pago Fácil</title>
@@ -18,12 +13,13 @@ echo "<h1>BIENVENIDO	$username </H1> ";
 	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
 	<section class="ftco-section">
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center mb-2">
 					<img class="logo-5" src="images/cicv-logo.png">
-					<h2 class="heading-section">Hola! Tu RUT es el <b>18.864.313-2</b></h2>
+					<h2 class="heading-section">Hola! Tu RUT es el <b></b></h2>
 					<p>Seleccione la(s) cuotas que quiere pagar:</p>
 				</div>
 			</div>
