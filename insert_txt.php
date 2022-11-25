@@ -5,7 +5,6 @@ $count = 0;
 $array = [];
 $matriz = [];
 $header = 0;
-$footer = 0;
 
 while(!feof($file)) {
   $row = fgets($file);
@@ -22,7 +21,9 @@ while(!feof($file)) {
 
 fclose($file);
 
-$header_num_colegio = substr($header, 1, 4);
+$id_colegio = mb_substr($header, 1, 4);
+
+//require("connect.php");
 
 for ($a=0; $a < $count; $a++) {
   $cadena = $array[$a];
@@ -39,48 +40,31 @@ for ($a=0; $a < $count; $a++) {
   $monto_cuota = mb_substr($cadena, 159, 15);
   $fecha_vencim = mb_substr($cadena, 174, 8);
 
-  $matriz[$a][0] = $n_contrato;
-  $matriz[$a][1] = $n_cuota;
-  $matriz[$a][2] = $rut;
-  $matriz[$a][3] = $nombre_deudor;
-  $matriz[$a][4] = $direccion;
-  $matriz[$a][5] = $comuna;
-  $matriz[$a][6] = $ciudad;
-  $matriz[$a][7] = $monto_cuota;
-  $matriz[$a][8] = $fecha_vencim;
+  $matriz[$a][0] = $id_colegio;
+  $matriz[$a][1] = $n_contrato;
+  $matriz[$a][2] = $n_cuota;
+  $matriz[$a][3] = $rut;
+  $matriz[$a][4] = $nombre_deudor;
+  $matriz[$a][5] = $direccion;
+  $matriz[$a][6] = $comuna;
+  $matriz[$a][7] = $ciudad;
+  $matriz[$a][8] = $monto_cuota;
+  $matriz[$a][9] = $fecha_vencim;
+
+  //Consulta para guardar en la base de datos
+  //$insert = "INSERT INTO nombre_bd(nombre_columna_1, nombre_columna_2, nombre_columna_3, etc) VALUES ('$id_colegio', '$n_contrato', '$n_cuota', 'etc')";
+  //$save = mysqli_query($mysqli, $insert);
 }
 
-// SOLO PARA REVISAR EL PRIMER REGISTRO
-$cadena = $array[0];
-$n_contrato = mb_substr($cadena, 1, 9);
-$n_cuota = mb_substr($cadena, 19, 9);
-$rut_in = mb_substr($cadena, 28, 9);
-$dig_verif = mb_substr($cadena, 37, 1);
-$rut = $rut_in . $dig_verif;
-$nombre_deudor = mb_substr($cadena, 38, 40);
-$direccion = mb_substr($cadena, 78, 40);
-$comuna = mb_substr($cadena, 118, 20);
-$ciudad = mb_substr($cadena, 138, 20);
-$monto_cuota = mb_substr($cadena, 159, 15);
-$fecha_vencim = mb_substr($cadena, 174, 8);
-echo "Cantidad Registros: " . $count . "<br>";
-echo "---------------<br><br>";
-echo "Código Colegio (Header): " . $header . "<br>";
-echo "Registro Original: " . $cadena . "<br>";
-echo "---------------<br><br>";
-echo "N° de Contrato: " . $n_contrato . "<br>";
-echo "N° de Couta: " . $n_cuota . "<br>";
-echo "Rut: " . $rut . "<br>";
-echo "Nombre Deudor: " . $nombre_deudor . "<br>";
-echo "Dirección: " . $direccion . "<br>";
-echo "Comuna: " . $comuna . "<br>";
-echo "Ciudad: " . $ciudad . "<br>";
-echo "Monto Cuota: " . $monto_cuota . "<br>";
-echo "Fecha Vencimiento: " . $fecha_vencim . "<br>";
-echo "---------------<br><br>";
-//-------------------------------------
+//require("close_connect.php");
 
-echo "num_colegio: " . $header_num_colegio . "<br>";
+//-------------------------------------------
+
+echo "Cantidad Registros: " . $count . "<br>";
+echo "---------------<br>";
+echo "Primera Línea (Header): " . $header . "<br>";
+echo "Registro Original: " . $array[0] . "<br>";
+echo "---------------<br><br>";
 
 echo "<pre>";
 print_r($matriz);
