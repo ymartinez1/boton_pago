@@ -61,7 +61,9 @@ body {
   text-align: left;
   background-color: #fff;
   margin-bottom: 64px; }
-
+.fontAwesome {
+  font-family: Helvetica, 'FontAwesome', sans-serif;
+}
 [tabindex="-1"]:focus {
   outline: 0 !important; }
 
@@ -156,6 +158,12 @@ a.link {
   color: gray;
 }
 a.link:hover {
+  color: #00b1e9;
+}
+a.linked {
+  color: #1f3459;
+}
+a.linked:hover {
   color: #00b1e9;
 }
 
@@ -8298,6 +8306,11 @@ h1, h2, h3, h4, h5,
     color: #cf0c0c; }
     .table tbody td.status .vencida:after {
       background: #f21d1d; }
+  .table tbody td.status .pagada {
+    background: #ddfde9;
+    color: #4db254; }
+    .table tbody td.status .pagada:after {
+      background: #4db254; }
   .table tbody td .img {
     width: 50px;
     height: 50px;
@@ -8416,4 +8429,8 @@ h1, h2, h3, h4, h5,
 .metodo-box img {
   height: 4em;
   margin: 5px 0;
+}
+.g-recaptcha {
+  transform:scale(0.93);
+  transform-origin:0 0;
 }
