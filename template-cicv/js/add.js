@@ -44,7 +44,7 @@ function calcularTotal() {
     }
   });
   var totalParts = parseFloat(tot.val()).toFixed(2).split('.');
-  tot.val('$' + totalParts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".") + '-');
+  tot.val('$' + totalParts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".") + '.-');
 }
 
 //CHECK ALL

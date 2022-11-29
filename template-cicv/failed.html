@@ -14,7 +14,6 @@
 
 	<script src="https://www.google.com/recaptcha/api.js?hl=es" async defer></script>
 
-	<?php require_once "php/php-catcha.php"; ?>
 </head>
 <body>
 	<section class="ftco-section">
@@ -25,21 +24,17 @@
 				</div>
 			</div>
 			<div class="row justify-content-center mt-5 mb-5">
-				<div class="col-md-4 text-center shadow-lg p-5 bg-white rounded">
+				<div class="col-md-6 text-center shadow-lg p-5 bg-white rounded">
 					<div class="mb-3">
-						<h2 class="heading-section">Revisa tu deuda</h2>
+						<h2 class="heading-error heading-icon"><i class="fa fa-times-circle-o" aria-hidden="true"></i></h2>
 					</div>
 					<div class="mb-3">
-						<p>Escribe tu RUT a continuación:</p>
+						<h2 class="heading-error">Ha ocurrido un error,<br>por favor inténtelo nuevamente.</h2>
 					</div>
 					<div class="mb-3">
-						<input type="text" class="form-control" id="txt_rut" aria-describedby="rut" placeholder="Ejemplo: 11222333-K">
-						<p class="tiny-text" id="msgerror"></p>
+						<p>El pago no ha sido realizado con éxito.</p>
 					</div>
-					<div class="mb-3">
-						<div class="g-recaptcha" data-sitekey="6Ld9NiAjAAAAALPthhVN7bfp73ffdt1LEptYyZ6I"></div>
-					</div>
-					<button id="btnvalida" class="btn btn-primary w-100">CONSULTAR</button>
+					<button id="btnvolver" class="btn btn-primary w-100">VOLVER A INTENTAR</button>
 				</div>
 			</div>
 		</div>

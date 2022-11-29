@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link href="https://cicv.cl/wp-content/uploads/2022/10/favicon.png" rel="shortcut icon">
+	<link href="images/favicon/favicon_cicv.png" rel="shortcut icon">
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -17,7 +17,7 @@
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center mb-2">
-					<img class="logo-5" src="images/cicv-logo.png">
+					<img class="logo-2" src="images/cicv-logo.png">
 					<h2 class="heading-section">Hola! Tu RUT es el <b>18.864.313-2</b></h2>
 					<p>Seleccione la(s) cuotas que quiere pagar:</p>
 				</div>
@@ -28,9 +28,9 @@
 						<table class="table">
 							<thead>
 								<tr>
-									<th>N° de contrato</th>
 									<th>Cuota</th>
 									<th>Monto</th>
+									<th>Fecha de vencimiento</th>
 									<th>Estado</th>
 									<th>
 										<label class="checkbox-wrap checkbox-primary">
@@ -42,14 +42,13 @@
 							</thead>
 							<tbody>
 								<tr class="alert" role="alert">
-									<td>00097531</td>
 									<td class="d-flex align-items-center">
 										<div class="cuota">
-											<span>Cuota Octubre</span>
-											<span>Alumno 01</span>
+											Colegiatura Octubre
 										</div>
 									</td>
-									<td>$80.000-</td>
+									<td>$80.000.-</td>
+									<td>05/10/2022</td>
 									<td class="status"><span class="vencida">Vencida</span></td>
 									<td>
 										<label class="checkbox-wrap checkbox-primary">
@@ -59,32 +58,14 @@
 									</td>
 								</tr>
 								<tr class="alert" role="alert">
-									<td>00086420</td>
 									<td class="d-flex align-items-center">
 										<div class="cuota">
-											<span>Cuota Octubre</span>
-											<span>Alumno 02</span>
+											Colegiatura Noviembre
 										</div>
 									</td>
-									<td>$70.000-</td>
+									<td>$80.000.-</td>
+									<td>05/11/2022</td>
 									<td class="status"><span class="vencida">Vencida</span></td>
-									<td>
-										<label class="checkbox-wrap checkbox-primary">
-											<input class="cuotas-check" type="checkbox" name="foo" attr-price="70000">
-											<span class="checkmark"></span>
-										</label>
-									</td>
-								</tr>
-								<tr class="alert" role="alert">
-									<td>00097531</td>
-									<td class="d-flex align-items-center">
-										<div class="cuota">
-											<span>Cuota Noviembre</span>
-											<span>Alumno 01</span>
-										</div>
-									</td>
-									<td>$80.000-</td>
-									<td class="status"><span class="active">Próxima a vencer</span></td>
 									<td>
 										<label class="checkbox-wrap checkbox-primary">
 											<input class="cuotas-check" type="checkbox" name="foo" attr-price="80000">
@@ -93,18 +74,17 @@
 									</td>
 								</tr>
 								<tr class="alert" role="alert">
-									<td>00086420</td>
 									<td class="d-flex align-items-center">
 										<div class="cuota">
-											<span>Cuota Noviembre</span>
-											<span>Alumno 02</span>
+											Colegiatura Diciembre
 										</div>
 									</td>
-									<td>$70.000-</td>
+									<td>$80.000.-</td>
+									<td>05/12/2022</td>
 									<td class="status"><span class="active">Próxima a vencer</span></td>
 									<td>
 										<label class="checkbox-wrap checkbox-primary">
-											<input class="cuotas-check" type="checkbox" name="foo" attr-price="70000">
+											<input class="cuotas-check" type="checkbox" name="foo" attr-price="80000">
 											<span class="checkmark"></span>
 										</label>
 									</td>
@@ -117,7 +97,7 @@
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center mb-2">
 					<h2 class="heading-section">
-						Total a pagar: <b><input id="total" class="input-total" type="text" placeholder="$0-" disabled></b>
+						Total a pagar: <b><input id="total" class="input-total" type="text" placeholder="$0.-" disabled></b>
 					</h2>
 				</div>
 			</div>
@@ -127,6 +107,25 @@
 				</div>
 				<div class="col-md-3 ms-auto">
 					<button type="submit" class="btn btn-primary mb-2">CONTINUAR</button>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="menssage-section">
+		<div class="container">
+			<div class="row menssage-row">
+				<div class="col-md-4 text-center menssage-border">
+					<h2 class="menssage-heading"><i class="fa fa-lock" aria-hidden="true"></i> PAGO 100% SEGURO</b></h2>
+					<p>Paga tu cuenta de manera fácil y segura.</p>
+				</div>
+				<div class="col-md-4 text-center menssage-border">
+					<h2 class="menssage-heading">¿AÚN APARECE TU DEUDA?</h2>
+					<p>El sistema puede tardar hasta 48 horas para que tu pago se vea reflejado.</p>
+				</div>
+				<div class="col-md-4 text-center menssage-border ms-auto">
+					<h2 class="menssage-heading">RECUERDA</h2>
+					<p>Paga el total de tu deuda para evitar morosidad.</p>
 				</div>
 			</div>
 		</div>

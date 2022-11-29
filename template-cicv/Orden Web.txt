@@ -1,0 +1,11 @@
+*Vista Apoderado*
+1) rut
+2) index
+3) a) pago
+3) b) sin_deuda
+4) a) success
+4) b) failed
+
+*Vista Jorge*
+1) login
+2) ?
