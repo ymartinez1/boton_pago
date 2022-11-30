@@ -51,9 +51,18 @@ for ($a=0; $a < $count; $a++) {
   $matriz[$a][8] = $monto_cuota;
   $matriz[$a][9] = $fecha_vencim;
 
-  //Consulta para guardar en la base de datos
-  //$insert = "INSERT INTO nombre_bd(nombre_columna_1, nombre_columna_2, nombre_columna_3, etc) VALUES ('$id_colegio', '$n_contrato', '$n_cuota', 'etc')";
-  //$save = mysqli_query($mysqli, $insert);
+  //---------------------Conexión e insert de datos--------------------------------\\
+  $username = "";
+  $password = "";
+  $database = "";
+  
+  $mysqli = new mysqli("localhost", $username, $password, $database);
+
+  $query = "INSERT INTO apoderado (Rut, Nombre, Direccion,monto_cuota,fecha_vencim,n_cuota,n_contrato)
+  VALUES ('{$rut}', '{$nombre_deudor}', '{$direccion}', '{$monto_cuota}', '{$fecha_vencim}', '{$n_cuota}', '{$n_contrato}')";
+  
+  $mysqli->query($query);
+  $mysqli->close();  
 }
 
 //require("close_connect.php");
