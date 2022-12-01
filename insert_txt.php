@@ -52,9 +52,9 @@ for ($a=0; $a < $count; $a++) {
   $matriz[$a][9] = $fecha_vencim;
 
   //---------------------Conexión e insert de datos--------------------------------\\
-  $username = "";
-  $password = "";
-  $database = "";
+  $username = "boston2021_btnpago_usertest";
+  $password = "02h;bRnV+E}t";
+  $database = "boston2021_botonpago_prueba";
   
   $mysqli = new mysqli("localhost", $username, $password, $database);
 

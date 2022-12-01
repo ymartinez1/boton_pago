@@ -1,13 +1,13 @@
 <?php
 $servername = "localhost";
-$database = "boton_pago";
-$username = "root";
-$password = "desarrollador";
+$database = "boston2021_botonpago_prueba";
+$username = "boston2021_btnpago_usertest";
+$password = "02h;bRnV+E}t";
 // Crear conexión
 $conn = mysqli_connect($servername, $username, $password, $database, 3306);
 // Checkear conexión
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
-
+echo "conexi´n exitosa";
 ?>
