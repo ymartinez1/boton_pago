@@ -4,10 +4,10 @@
 	//$mysqli=new mysqli("Servidor","Usuario de la BD","Contraseña","Nombre de la BD");
 
 	if(mysqli_connect_errno()){
-		echo 'Conexión Fallida : ', mysqli_connect_error();
+		echo 'Conexión Fallida: ', mysqli_connect_error();
 		exit();
 	}else {
-		echo "Conexión Correcta";
+		echo 'Conexión Correcta: ', mysqli_connect_error();
 	}
 
 ?>
