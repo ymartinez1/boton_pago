@@ -18,13 +18,15 @@ var Fn = {
     return S?S-1:'k';
   }
 }
-$("#btnvalida").click(function(){
-  if (Fn.validaRut( $("#txt_rut").val() )){
-    $("#msgerror").html("El RUT ingresado es correcto");
-  } else {
-    $("#msgerror").html("El RUT ingresado es incorrecto");
-  }
-});
+if ($('#txt_rut').val().length != 0) {
+  $("#btnvalida").click(function(){
+    if (Fn.validaRut( $("#txt_rut").val() )){
+      $("#msgerror").html("El RUT ingresado es correcto");
+    } else {
+      $("#msgerror").html("El RUT ingresado es incorrecto");
+    }
+  });
+}
 
 //SUMA
 $(document).ready(function() {

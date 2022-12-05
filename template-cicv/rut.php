@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link href="https://cicv.cl/wp-content/uploads/2022/10/favicon.png" rel="shortcut icon">
+	<link href="images/favicon/favicon_cicv.png" rel="shortcut icon">
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -12,40 +12,35 @@
 
 	<link rel="stylesheet" href="css/style.css">
 
-	<script src="https://www.google.com/recaptcha/api.js?hl=es" async defer></script>
+	<!--<script src="https://www.google.com/recaptcha/api.js?hl=es" async defer></script>-->
 
-	<?php require_once "php/php-catcha.php"; ?>
+	<?php // require_once "php/php-catcha.php"; ?>
 </head>
 <body>
 	<section class="ftco-section">
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center">
-					<img class="logo-2" src="images/febe-logo.png">
+					<img class="logo-2" src="images/cicv-logo.png">
 				</div>
 			</div>
-			<div class="row justify-content-center mt-3 mb-3">
-				<div class="col-md-4 text-center shadow-lg p-5 bg-white rounded">
+			<div class="row justify-content-center mt-5 mb-5">
+				<form class="col-md-4 text-center shadow-lg p-5 bg-white rounded" autocomplete="off" action="php/log.php" method="POST">
 					<div class="mb-3">
-						<h2 class="heading-section">Iniciar sesión</h2>
+						<h2 class="heading-section">Revisa tu deuda</h2>
 					</div>
 					<div class="mb-3">
-						<input type="text" class="form-control" placeholder="Usuario">
+						<p>Escribe tu RUT a continuación:</p>
 					</div>
 					<div class="mb-3">
-						<input type="password" class="form-control" placeholder="Contraseña">
+						<input type="text" class="form-control" id="rut" name="rut" aria-describedby="rut" placeholder="Ejemplo: 11222333-K">
+						<p class="tiny-text" id="msgerror"></p>
 					</div>
-					<div class="mb-3">
+					<!--<div class="mb-3">
 						<div class="g-recaptcha" data-sitekey="6Ld9NiAjAAAAALPthhVN7bfp73ffdt1LEptYyZ6I"></div>
-					</div>
-					<button id="entrar" class="btn btn-primary w-100">ENTRAR</button>
-					<div class="mb-3">
-						<hr class="hr-login">
-					</div>
-					<div class="mb-3">
-						<a class="link" href="#">¿Has olvidado tu contraseña?</a>
-					</div>
-				</div>
+					</div>-->
+					<button id="consultar" name="consultar" class="btn btn-primary w-100">CONSULTAR</button>
+				</form>
 			</div>
 		</div>
 	</section>
@@ -53,15 +48,15 @@
 		<div class="container">
 			<div class="row white-text">
 				<div class="col-md-10">
-					<p>© <a href="https://bostoneduca.cl/">Fundación BostonEduca</a></p>
+					<p>© <a href="https://cicv.cl/">Colegio Inmaculada Concepción de Vitacura</a></p>
 				</div>
 				<div class="col-md-1">
-					<a class="icon-rrss" href="https://www.facebook.com/BostonEduca/">
+					<a class="icon-rrss" href="https://www.facebook.com/cicv.cl">
 						<i class="fa fa-facebook-official" aria-hidden="true"></i>
 					</a>
 				</div>
 				<div class="col-md-1 ms-auto">
-					<a class="icon-rrss" href="https://www.instagram.com/bostoneduca/">
+					<a class="icon-rrss" href="https://www.instagram.com/cicv.cl/">
 						<i class="fa fa-instagram" aria-hidden="true"></i>
 					</a>
 				</div>
