@@ -47,7 +47,7 @@
 			</div>
 			<div class="row justify-content-center mt-4">
 				<div class="col-md-3">
-					<button type="submit" class="btn btn-secondary mb-2">VOLVER</button>
+					<button onclick="document.location.href ='detalle.php'" type="submit" class="btn btn-secondary mb-2">VOLVER</button>
 				</div>
 			</div>
 		</div>

@@ -1,6 +1,10 @@
 <?php
 session_start();
 if($_SESSION["logueado"] == TRUE) {
+
+	require ("php/connect.php");
+	$rut = $_SESSION['rut'];
+
 	?>
 
 <html lang="es">
@@ -23,7 +27,7 @@ if($_SESSION["logueado"] == TRUE) {
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center mb-2">
 					<img class="logo-2" src="images/cicv-logo.png">
-					<h2 class="heading-section">Hola! Tu RUT es el <b>18.864.313-2</b></h2>
+					<h2 class="heading-section">Hola! Tu RUT es el <b><?php print_r($_SESSION['rut']); ?></b></h2>
 					<p>Seleccione la(s) cuotas que quiere pagar:</p>
 				</div>
 			</div>
@@ -46,41 +50,19 @@ if($_SESSION["logueado"] == TRUE) {
 								</tr>
 							</thead>
 							<tbody>
-								<tr class="alert" role="alert">
-									<td>Octubre</td>
-									<td>$80.000.-</td>
-									<td>05/10/2022</td>
-									<td class="status"><span class="vencida">Vencida</span></td>
-									<td>
-										<label class="checkbox-wrap checkbox-primary">
-											<input class="cuotas-check" type="checkbox" name="foo" attr-price="80000">
-											<span class="checkmark"></span>
-										</label>
-									</td>
-								</tr>
-								<tr class="alert" role="alert">
-									<td>Noviembre</td>
-									<td>$80.000.-</td>
-									<td>05/11/2022</td>
-									<td class="status"><span class="vencida">Vencida</span></td>
-									<td>
-										<label class="checkbox-wrap checkbox-primary">
-											<input class="cuotas-check" type="checkbox" name="foo" attr-price="80000">
-											<span class="checkmark"></span>
-										</label>
-									</td>
-								</tr>
-								<tr class="alert" role="alert">
+								<tr>
 									<td>Diciembre</td>
-									<td>$80.000.-</td>
-									<td>05/12/2022</td>
-									<td class="status"><span class="active">Próxima a vencer</span></td>
+									<td>$<?php print_r($_SESSION['monto_cuota']); ?></td>
+
+									<td><?php print_r($_SESSION['fecha_venc']); ?></td>
+									<td class="status"><span class="vencida">Vencida</span></td>
 									<td>
 										<label class="checkbox-wrap checkbox-primary">
-											<input class="cuotas-check" type="checkbox" name="foo" attr-price="80000">
+											<input class="cuotas-check" type="checkbox" name="foo" attr-price= "133200">
 											<span class="checkmark"></span>
 										</label>
 									</td>
+
 								</tr>
 							</tbody>
 						</table>
@@ -88,6 +70,7 @@ if($_SESSION["logueado"] == TRUE) {
 				</div>
 			</div>
 			<!-- ARRAY formado con datos de la BD | luego se debe eliminar -->
+			<!--
 			<div class="row">
 				<div class="col-md-12">
 					<pre>
@@ -95,6 +78,7 @@ if($_SESSION["logueado"] == TRUE) {
 					</pre>
 				</div>
 			</div>
+			-->
 			<!-- END ARRAY-->
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center mb-2">
@@ -105,10 +89,10 @@ if($_SESSION["logueado"] == TRUE) {
 			</div>
 			<div class="row text-center">
 				<div class="col-md-3">
-					<button type="submit" class="btn btn-secondary mb-2">SALIR</button>
+					<button onclick="document.location.href ='rut.php'" type="submit" class="btn btn-secondary mb-2">SALIR</button>
 				</div>
 				<div class="col-md-3 ms-auto">
-					<button type="submit" class="btn btn-primary mb-2">CONTINUAR</button>
+					<button onclick="document.location.href ='pago.php'" type="submit" class="btn btn-primary mb-2">CONTINUAR</button>
 				</div>
 			</div>
 		</div>
