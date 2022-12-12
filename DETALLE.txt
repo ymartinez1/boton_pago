@@ -1,0 +1,28 @@
+*Vista Apoderado*
+1) rut
+2) index
+3) a) pago
+3) b) sin_deuda
+4) a) success
+4) b) failed
+
+*Vista Jorge*
+1) login
+2) download
+
+-----------
+
+rut de prueba
+
+122757676
+44383365
+124885647
+
+-----------
+
+<?php ?>
+
+<td class="status"><span class="vencida">Vencida</span></td>
+									<td class="status"><span class="active">Vencida</span></td>
+									<td class="status"><span class="pagada">Vencida</span></td>
+

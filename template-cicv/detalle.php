@@ -2,14 +2,16 @@
 session_start();
 if($_SESSION["logueado"] == TRUE) {
 
-	require ("php/connect.php");
-	$rut = $_SESSION['rut'];
+	$all_datos = $_SESSION["datos"];
+	$rut_con_formato = $_SESSION["rut_format"];
+	$rut_sin_formato = $_SESSION["rut_no_format"];
+	$sigla_colegio = $_SESSION["colegio"];
 
 	?>
 
 <html lang="es">
 <head>
-	<title>Pago Fácil | CICV</title>
+	<title>Pago Fácil | <?php echo strtoupper($_SESSION["colegio"]); ?></title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -26,8 +28,8 @@ if($_SESSION["logueado"] == TRUE) {
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center mb-2">
-					<img class="logo-2" src="images/cicv-logo.png">
-					<h2 class="heading-section">Hola! Tu RUT es el <b><?php print_r($_SESSION['rut']); ?></b></h2>
+					<img class="logo-2" src="images/<?php echo $_SESSION["colegio"]; ?>-logo.png">
+					<h2 class="heading-section">Hola! Tu RUT es el <b><?php echo($rut_con_formato) ?></b></h2>
 					<p>Seleccione la(s) cuotas que quiere pagar:</p>
 				</div>
 			</div>
@@ -37,6 +39,7 @@ if($_SESSION["logueado"] == TRUE) {
 						<table class="table table-hover">
 							<thead>
 								<tr>
+									<th>N° Cuota</th>
 									<th>Colegiatura</th>
 									<th>Monto</th>
 									<th>Fecha de vencimiento</th>
@@ -51,11 +54,34 @@ if($_SESSION["logueado"] == TRUE) {
 							</thead>
 							<tbody>
 								<tr>
+									<?php
+									$count = count($all_datos);
+									for ($a=0; $a < $count; $a++) {
+										$n_cuota = $matriz[$a]["n_cuota"];
+
+										$fecha_vencim = formateo_fecha($matriz[$a]["fecha_vencim"]);
+										$fecha_num = strtotime($fecha_vencim);
+										$colegiatura = date("m", $fecha_num);
+
+										$monto_cuota = $matriz[$a]["monto_cuota"];
+										$monto = mb_substr($monto_cuota, 159, 15);
+										$monto_format = number_format($monto, 0, '', '.');
+
+
+
+
+									?>
+
+
+
+
+
+
 									<td>Diciembre</td>
 									<td>$<?php print_r($_SESSION['monto_cuota']); ?></td>
-
 									<td><?php print_r($_SESSION['fecha_venc']); ?></td>
 									<td class="status"><span class="vencida">Vencida</span></td>
+									<td class="status"><span class="active">Vencida</span></td>
 									<td>
 										<label class="checkbox-wrap checkbox-primary">
 											<input class="cuotas-check" type="checkbox" name="foo" attr-price= "133200">
@@ -70,7 +96,7 @@ if($_SESSION["logueado"] == TRUE) {
 				</div>
 			</div>
 			<!-- ARRAY formado con datos de la BD | luego se debe eliminar -->
-			<!--
+			
 			<div class="row">
 				<div class="col-md-12">
 					<pre>
@@ -78,7 +104,7 @@ if($_SESSION["logueado"] == TRUE) {
 					</pre>
 				</div>
 			</div>
-			-->
+			
 			<!-- END ARRAY-->
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center mb-2">
