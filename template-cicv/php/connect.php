@@ -5,7 +5,7 @@ $user = "boston2021_btnpago_usertest";
 $pass = "02h;bRnV+E}t";
 $database = "boston2021_botonpago_prueba";
 
-$mysqli = new mysqli($host, $user, $pass, $database, 3306);
+$mysqli = new mysqli($host, $user, $pass, $database);
     //$mysqli=new mysqli("Servidor","Usuario de la BD","Contraseña","Nombre de la BD");
 
 if(mysqli_connect_errno()){

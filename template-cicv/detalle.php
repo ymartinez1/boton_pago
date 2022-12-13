@@ -2,20 +2,29 @@
 session_start();
 if($_SESSION["logueado"] == TRUE) {
 
+	include("php/function.php");
+
 	$all_datos = $_SESSION["datos"];
 	$rut_con_formato = $_SESSION["rut_format"];
 	$rut_sin_formato = $_SESSION["rut_no_format"];
-	$sigla_colegio = $_SESSION["colegio"];
+	$id_colegio = $_SESSION["id_colegio"];
+	
+	$sigla_colegio = select_iniciales($id_colegio);
+	$mayus_colegio = strtoupper($sigla_colegio);
+	$nombre_colegio = select_colegio($id_colegio);
+	$url_colegio = select_url($id_colegio);
+	$fb_colegio = facebook($id_colegio);
+	$ig_colegio = instagram($id_colegio);
 
 	?>
 
 <html lang="es">
 <head>
-	<title>Pago Fácil | <?php echo strtoupper($_SESSION["colegio"]); ?></title>
+	<title>Pago Fácil | <?php echo $mayus_colegio; ?></title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link href="images/favicon/favicon_cicv.png" rel="shortcut icon">
+	<link href="images/favicon/favicon_<?php echo $sigla_colegio; ?>.png" rel="shortcut icon">
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -28,8 +37,8 @@ if($_SESSION["logueado"] == TRUE) {
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center mb-2">
-					<img class="logo-2" src="images/<?php echo $_SESSION["colegio"]; ?>-logo.png">
-					<h2 class="heading-section">Hola! Tu RUT es el <b><?php echo($rut_con_formato) ?></b></h2>
+					<img class="logo-2" src="images/<?php echo $sigla_colegio; ?>-logo.png">
+					<h2 class="heading-section">Hola! Tu RUT es el <b><?php echo $rut_con_formato; ?></b></h2>
 					<p>Seleccione la(s) cuotas que quiere pagar:</p>
 				</div>
 			</div>
@@ -46,66 +55,48 @@ if($_SESSION["logueado"] == TRUE) {
 									<th>Estado</th>
 									<th>
 										<label class="checkbox-wrap checkbox-primary">
-											<input type="checkbox" onClick="selectAll(this)">
-											<span class="checkmark"></span>
+											<input type="checkbox" onClick="selectAll(this)"><span class="checkmark"></span>
 										</label>
 									</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<?php
-									$count = count($all_datos);
-									for ($a=0; $a < $count; $a++) {
-										$n_cuota = $matriz[$a]["n_cuota"];
+								<?php
+								$count = count($all_datos);
+								for ($a=0; $a < $count; $a++) {
+									echo "<tr>";
 
-										$fecha_vencim = formateo_fecha($matriz[$a]["fecha_vencim"]);
-										$fecha_num = strtotime($fecha_vencim);
-										$colegiatura = date("m", $fecha_num);
+									$n_cuota = $all_datos[$a]["n_cuota"];
+									echo "<td>". $n_cuota ."</td>";
 
-										$monto_cuota = $matriz[$a]["monto_cuota"];
-										$monto = mb_substr($monto_cuota, 159, 15);
-										$monto_format = number_format($monto, 0, '', '.');
+									$fecha_c = $all_datos[$a]["fecha_vencim"];
+									$colegiatura = obtener_mes($fecha_c);
+									echo "<td>". $colegiatura ."</td>";
 
+									$monto_cuota = $all_datos[$a]["monto_cuota"];
+									$monto = mb_substr($monto_cuota, 0, -5);
+									$monto_format = number_format($monto, 0, '', '.');
+									echo "<td>$". $monto_format .".-</td>";
 
+									$fecha_v = $all_datos[$a]["fecha_vencim"];
+									$vence = formateo_fecha($fecha_v);
+									echo "<td>". $vence ."</td>";
 
+									$fecha_e = $vence;
+									$estado = vencido($fecha_e);
+									echo "<td class='status'>". $estado ."</td>";
 
-									?>
+									$valor_check = $monto;
+									echo "<td><label class='checkbox-wrap checkbox-primary'><input class='cuotas-check' type='checkbox' name='foo' attr-price='". $valor_check ."' onClick='calcularTotal(this)'><span class='checkmark'></span></label></td>";
 
-
-
-
-
-
-									<td>Diciembre</td>
-									<td>$<?php print_r($_SESSION['monto_cuota']); ?></td>
-									<td><?php print_r($_SESSION['fecha_venc']); ?></td>
-									<td class="status"><span class="vencida">Vencida</span></td>
-									<td class="status"><span class="active">Vencida</span></td>
-									<td>
-										<label class="checkbox-wrap checkbox-primary">
-											<input class="cuotas-check" type="checkbox" name="foo" attr-price= "133200">
-											<span class="checkmark"></span>
-										</label>
-									</td>
-
-								</tr>
+									echo "</tr>";
+								}
+								?>
 							</tbody>
 						</table>
 					</div>
 				</div>
 			</div>
-			<!-- ARRAY formado con datos de la BD | luego se debe eliminar -->
-			
-			<div class="row">
-				<div class="col-md-12">
-					<pre>
-						<?php print_r($_SESSION['datos']); ?>
-					</pre>
-				</div>
-			</div>
-			
-			<!-- END ARRAY-->
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center mb-2">
 					<h2 class="heading-section">
@@ -147,15 +138,15 @@ if($_SESSION["logueado"] == TRUE) {
 		<div class="container">
 			<div class="row white-text">
 				<div class="col-md-10">
-					<p>© <a href="https://cicv.cl/">Colegio Inmaculada Concepción de Vitacura</a></p>
+					<p>© <a href="<?php echo $url_colegio; ?>"><?php echo $nombre_colegio; ?></a></p>
 				</div>
 				<div class="col-md-1">
-					<a class="icon-rrss" href="https://www.facebook.com/cicv.cl">
+					<a class="icon-rrss" href="<?php echo $fb_colegio; ?>">
 						<i class="fa fa-facebook-official" aria-hidden="true"></i>
 					</a>
 				</div>
 				<div class="col-md-1 ms-auto">
-					<a class="icon-rrss" href="https://www.instagram.com/cicv.cl/">
+					<a class="icon-rrss" href="<?php echo $ig_colegio; ?>">
 						<i class="fa fa-instagram" aria-hidden="true"></i>
 					</a>
 				</div>
@@ -168,10 +159,10 @@ if($_SESSION["logueado"] == TRUE) {
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
+	<script src="js/add.js"></script>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/popper.js"></script>
 	<script src="js/main.js"></script>
-	<script src="js/add.js"></script>
 </body>
 </html>
 <?php

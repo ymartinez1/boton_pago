@@ -18,11 +18,13 @@ rut de prueba
 44383365
 124885647
 
+12.275.767-6
+4.438.336-5
+12.488.564-7
+
 -----------
 
 <?php ?>
 
-<td class="status"><span class="vencida">Vencida</span></td>
-									<td class="status"><span class="active">Vencida</span></td>
-									<td class="status"><span class="pagada">Vencida</span></td>
+$fecha_por_vencer = date("Y-m-d",strtotime($hoy ."-5 days"));
 

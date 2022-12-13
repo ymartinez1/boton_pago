@@ -29,11 +29,13 @@ if ($('#txt_rut').val().length != 0) {
 }
 
 //SUMA
+/*
 $(document).ready(function() {
   $(document).on('click keyup','.cuotas-check',function() {
     calcularTotal();
   });
 });
+*/
 function calcularTotal() {
   var tot = $('#total');
   tot.val(0);

@@ -3,13 +3,14 @@
 if(!empty($_POST['rut'])){
 
 	require("connect.php");
-	require("function.php");
+	include("function.php");
 
 	$rut = $_POST["rut"];
 	$rut_limp = limpia_rut($rut);
 	$matriz = [];
 
-	$consulta_buscar = "SELECT * FROM apoderado_test WHERE rut = '$rut'";
+	$consulta_buscar = "SELECT * FROM apoderado_test WHERE rut = '$rut_limp'";
+	//Hay que ordenar por fecha, por lo que abra que guardar una columna con la fecha formateada para poder ordenar de más antiguo al más nuevo
 
 	if($resultado_buscar = $mysqli->query($consulta_buscar)) {
 		$var = 0;
@@ -29,10 +30,10 @@ if(!empty($_POST['rut'])){
 	$_SESSION["logueado"] = TRUE;
 	$_SESSION["datos"] = $matriz;
 
-	$_SESSION["rut_format"] = formateo_rut($rut);
+	$_SESSION["rut_format"] = $rut;
 	$_SESSION["rut_no_format"] = $rut_limp;
 
-	$_SESSION["colegio"] = select_colegio($matriz[0]["id_colegio"]);
+	$_SESSION["id_colegio"] = $matriz[0]["id_colegio"];
 
 	//$_SESSION["monto_cuota"] = number_format($monto_cuota);
 	//$_SESSION["fecha_venc"] = formateo_fecha($fecha_venc);
