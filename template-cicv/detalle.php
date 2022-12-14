@@ -97,21 +97,26 @@ if($_SESSION["logueado"] == TRUE) {
 					</div>
 				</div>
 			</div>
-			<div class="row justify-content-center">
-				<div class="col-md-6 text-center mb-2">
-					<h2 class="heading-section">
-						Total a pagar: <b><input id="total" class="input-total" type="text" placeholder="$0.-" disabled></b>
-					</h2>
+			<form action="php/metodo.php" method="POST">
+				<div class="row justify-content-center">
+					<div class="col-md-6 text-center mb-2">
+						<h2 class="heading-section">
+							Total a pagar: <b><input id="total" name="total" class="input-total" type="text" placeholder="$0.-" disabled></b>
+						</h2>
+						<span style="display: none;">
+							<input id="total_hidden" name="total_hidden" class="input-total" type="text" placeholder="$0.-">
+						</span>
+					</div>
 				</div>
-			</div>
-			<div class="row text-center">
-				<div class="col-md-3">
-					<button onclick="document.location.href ='rut.php'" type="submit" class="btn btn-secondary mb-2">SALIR</button>
+				<div class="row text-center">
+					<div class="col-md-3">
+						<button id="salir" name="salir" class="btn btn-secondary mb-2" formaction="php/close.php">SALIR</button>
+					</div>
+					<div class="col-md-3 ms-auto">
+						<button type="submit" id="continuar" name="continuar" class="btn btn-primary mb-2">CONSULTAR</button>
+					</div>
 				</div>
-				<div class="col-md-3 ms-auto">
-					<button onclick="document.location.href ='pago.php'" type="submit" class="btn btn-primary mb-2">CONTINUAR</button>
-				</div>
-			</div>
+			</form>
 		</div>
 	</section>
 
@@ -168,6 +173,6 @@ if($_SESSION["logueado"] == TRUE) {
 <?php
 	} else {
 		session_destroy();
-		header("Location: rut.php");
+		header("Location: https://bostoneduca.cl/pagofacil/rut.php");
 	}
 ?>

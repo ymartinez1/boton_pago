@@ -39,7 +39,7 @@
 					<!--<div class="mb-3">
 						<div class="g-recaptcha" data-sitekey="6Ld9NiAjAAAAALPthhVN7bfp73ffdt1LEptYyZ6I"></div>
 					</div>-->
-					<button id="consultar" name="consultar" class="btn btn-primary w-100">CONSULTAR</button>
+					<button type="submit" id="consultar" name="consultar" class="btn btn-primary w-100">CONSULTAR</button>
 				</form>
 			</div>
 		</div>
