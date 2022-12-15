@@ -87,7 +87,7 @@ if($_SESSION["logueado"] == TRUE) {
 									echo "<td class='status'>". $estado ."</td>";
 
 									$valor_check = $monto;
-									echo "<td><label class='checkbox-wrap checkbox-primary'><input class='cuotas-check' type='checkbox' name='foo' attr-price='". $valor_check ."' onClick='calcularTotal(this)'><span class='checkmark'></span></label></td>";
+									echo "<td><label class='checkbox-wrap checkbox-primary'><input class='cuotas-check' type='checkbox' name='foo' attr-price='". $valor_check ."'><span class='checkmark'></span></label></td>";
 
 									echo "</tr>";
 								}
@@ -97,7 +97,7 @@ if($_SESSION["logueado"] == TRUE) {
 					</div>
 				</div>
 			</div>
-			<form action="php/metodo.php" method="POST">
+			<form id="monto_pago" name="monto_pago" action="php/metodo.php" method="POST">
 				<div class="row justify-content-center">
 					<div class="col-md-6 text-center mb-2">
 						<h2 class="heading-section">
@@ -113,7 +113,7 @@ if($_SESSION["logueado"] == TRUE) {
 						<button id="salir" name="salir" class="btn btn-secondary mb-2" formaction="php/close.php">SALIR</button>
 					</div>
 					<div class="col-md-3 ms-auto">
-						<button type="submit" id="continuar" name="continuar" class="btn btn-primary mb-2">CONSULTAR</button>
+						<button type="submit" id="pagar" name="pagar" class="btn btn-primary mb-2" onClick="checkbox_checked(this)">PAGAR</button>
 					</div>
 				</div>
 			</form>

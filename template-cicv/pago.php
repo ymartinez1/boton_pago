@@ -1,10 +1,30 @@
+<?php
+session_start();
+if($_SESSION["logueado"] == TRUE) {
+
+	include("php/function.php");
+
+	$total_pago = $_SESSION["total_pago"] ;
+
+	$rut_con_formato = $_SESSION["rut_format"];
+	$rut_sin_formato = $_SESSION["rut_no_format"];
+	$id_colegio = $_SESSION["id_colegio"];
+	
+	$sigla_colegio = select_iniciales($id_colegio);
+	$mayus_colegio = strtoupper($sigla_colegio);
+	$nombre_colegio = select_colegio($id_colegio);
+	$url_colegio = select_url($id_colegio);
+	$fb_colegio = facebook($id_colegio);
+	$ig_colegio = instagram($id_colegio);
+
+	?>
 <html lang="es">
 <head>
-	<title>Pago Fácil | CICV</title>
+	<title>Pago Fácil | <?php echo $mayus_colegio; ?></title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link href="images/favicon/favicon_cicv.png" rel="shortcut icon">
+	<link href="images/favicon/favicon_<?php echo $sigla_colegio; ?>.png" rel="shortcut icon">
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -17,8 +37,8 @@
 		<div class="container">
 			<div class="row justify-content-center mb-2">
 				<div class="col-md-6 text-center">
-					<img class="logo-2" src="images/cicv-logo.png">
-					<h2 class="heading-section">Total a pagar: <b>$80.000-</b></h2>
+					<img class="logo-2" src="images/<?php echo $sigla_colegio; ?>-logo.png">
+					<h2 class="heading-section">Total a pagar: <b><?php echo $total_pago; ?></b></h2>
 				</div>
 			</div>
 			<div class="row text-center mt-3">
@@ -28,15 +48,15 @@
 				<button class="col-md-3 metodo-box rounded m-2">
 					<img class="logo-5" src="images/metodos/webpay.png">
 				</button>
-				<button class="col-md-3 metodo-box rounded m-2">
+				<button class="col-md-3 metodo-box rounded m-2" disabled>
 					<img class="logo-5" src="images/metodos/servipag.png">
 				</button>
 			</div>
 			<div class="row justify-content-center mt-1 mb-1">
-				<button class="col-md-3 metodo-box rounded m-2">
+				<button class="col-md-3 metodo-box rounded m-2" disabled>
 					<img class="logo-5" src="images/metodos/khipu.png">
 				</button>
-				<button class="col-md-3 metodo-box rounded m-2">
+				<button class="col-md-3 metodo-box rounded m-2" disabled>
 					<img class="logo-5" src="images/metodos/getnet.png">
 				</button>
 			</div>
@@ -47,7 +67,7 @@
 			</div>
 			<div class="row justify-content-center mt-4">
 				<div class="col-md-3">
-					<button onclick="document.location.href ='detalle.php'" type="submit" class="btn btn-secondary mb-2">VOLVER</button>
+					<button onclick="document.location.href='detalle.php'" type="submit" class="btn btn-secondary mb-2">VOLVER</button>
 				</div>
 			</div>
 		</div>
@@ -57,15 +77,15 @@
 		<div class="container">
 			<div class="row white-text">
 				<div class="col-md-10">
-					<p>© <a href="https://cicv.cl/">Colegio Inmaculada Concepción de Vitacura</a></p>
+					<p>© <a href="<?php echo $url_colegio; ?>"><?php echo $nombre_colegio; ?></a></p>
 				</div>
 				<div class="col-md-1">
-					<a class="icon-rrss" href="https://www.facebook.com/cicv.cl">
+					<a class="icon-rrss" href="<?php echo $fb_colegio; ?>">
 						<i class="fa fa-facebook-official" aria-hidden="true"></i>
 					</a>
 				</div>
 				<div class="col-md-1 ms-auto">
-					<a class="icon-rrss" href="https://www.instagram.com/cicv.cl/">
+					<a class="icon-rrss" href="<?php echo $ig_colegio; ?>">
 						<i class="fa fa-instagram" aria-hidden="true"></i>
 					</a>
 				</div>
@@ -84,3 +104,9 @@
 	<script src="js/add.js"></script>
 </body>
 </html>
+<?php
+	} else {
+		session_destroy();
+		header("Location: https://bostoneduca.cl/pagofacil/rut.php");
+	}
+?>
