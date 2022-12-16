@@ -37,7 +37,7 @@ if($_SESSION["logueado"] == TRUE) {
 		<div class="container">
 			<div class="row justify-content-center mb-2">
 				<div class="col-md-6 text-center">
-					<img class="logo-2" src="images/<?php echo $sigla_colegio; ?>-logo.png">
+					<img class="logo" src="images/<?php echo $sigla_colegio; ?>-logo.png">
 					<h2 class="heading-section">Total a pagar: <b><?php echo $total_pago; ?></b></h2>
 				</div>
 			</div>

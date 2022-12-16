@@ -21,7 +21,7 @@
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center">
-					<img class="logo-2" src="images/febe-logo.png">
+					<img class="logo" src="images/febe-logo.png">
 				</div>
 			</div>
 			<div class="row justify-content-center mt-3 mb-3">

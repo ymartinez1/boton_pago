@@ -8410,12 +8410,8 @@ h1, h2, h3, h4, h5,
   font-size: 14px;
 }
 
-.logo-1 {
-  height: 6em;
-  max-width: 100%;
-}
-.logo-2 {
-  height: 4em;
+.logo {
+  height: 7em;
   max-width: 100%;
 }
 

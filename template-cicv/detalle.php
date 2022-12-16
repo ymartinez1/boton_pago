@@ -37,9 +37,9 @@ if($_SESSION["logueado"] == TRUE) {
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center mb-2">
-					<img class="logo-2" src="images/<?php echo $sigla_colegio; ?>-logo.png">
+					<img class="logo" src="images/<?php echo $sigla_colegio; ?>-logo.png">
 					<h2 class="heading-section">Hola! Tu RUT es el <b><?php echo $rut_con_formato; ?></b></h2>
-					<p>Seleccione la(s) cuotas que quiere pagar:</p>
+					<p>Seleccione la(s) cuota(s) que quiere pagar. Recuerde que debe pagar la(s) colegiatura(s) por orden de vencimiento.</p>
 				</div>
 			</div>
 			<div class="row">
@@ -87,7 +87,11 @@ if($_SESSION["logueado"] == TRUE) {
 									echo "<td class='status'>". $estado ."</td>";
 
 									$valor_check = $monto;
-									echo "<td><label class='checkbox-wrap checkbox-primary'><input class='cuotas-check' type='checkbox' name='foo' attr-price='". $valor_check ."'><span class='checkmark'></span></label></td>";
+									$disable = "";
+									if (!empty($a)) {
+										$disable = " disabled";
+									}
+									echo "<td><label class='checkbox-wrap checkbox-primary'><input class='cuotas-check' type='checkbox' attr-price='" .$valor_check. "' name='foo' id='check" .$a. "' onClick='test(".$a.")'" .$disable. "><span class='checkmark'></span></label></td>";
 
 									echo "</tr>";
 								}

@@ -17,7 +17,7 @@
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center">
-					<img class="logo-2" src="images/cicv-logo.png">
+					<img class="logo" src="images/cicv-logo.png">
 				</div>
 			</div>
 			<div class="row justify-content-center mt-5 mb-5">

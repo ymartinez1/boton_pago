@@ -50,3 +50,21 @@ function checkbox_checked() {
     if(hasError) event.preventDefault();
   });
 }
+
+//CONTROL CHECKBOX ANTIGUOS PRIMERO
+function test(id_check){
+  var check_a = "check"+id_check;
+  var check_b = check_a+1;
+  var check = document.getElementById(check_a);
+
+ //alert(check);
+  /*if( $('#checkbox1').attr('checked') ) {
+    alert('checkbox1 esta Seleccionado');
+  }*/
+  var isChecked = document.getElementById(check_a).checked;
+  if(isChecked){
+    alert('Seleccionado');
+  } else {
+    alert('Deseleccionado');
+  }
+}
